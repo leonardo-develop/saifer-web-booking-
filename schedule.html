@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Schedule</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        @font-face {
+    font-family: eae;
+    src: url(css/ntailu.ttf);
+}
+        body {
+            font-family: eae;
+            background-color: #f0f0f0;
+            color: #03202e;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        table {
+            width: 100%;
+            max-width: 1400px;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+        }
+
+        th,
+        td {
+            padding: 16px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #03202e;
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        td {
+            font-size: 18px;
+            position: relative;
+        }
+
+        tr:nth-child(even) {
+            background-color: #e9f4fb;
+        }
+
+        tr:hover {
+            background-color: #d8eefe;
+            cursor: pointer;
+        }
+
+        td::before {
+            content: " ";
+            position: absolute;
+            top: 50%;
+            left: -15px;
+            width: 10px;
+            height: 10px;
+            background-color: #06a6f9;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        tr:hover td::before {
+            opacity: 1;
+        }
+
+        .icon {
+            margin-right: 8px;
+            color: #06a6f9;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+                font-size: 16px;
+            }
+
+            th,
+            td {
+                padding: 12px;
+            }
+        }
+        .menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #03202e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #06a6f9;
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #03202e;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu-open .menu {
+    transform: translateX(0);
+}
+
+    </style>
+</head>
+
+<body>
+    <button class="menu-toggle">Menu</button>
+<nav class="menu">
+    <a href="about.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="track.html">Track</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="BusesBooking.html">Buses Booking</a>
+    <a href="login.html">Logout</a>
+</nav>
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('menu-open');
+});
+
+document.addEventListener('click', (event) => {
+    const menu = document.querySelector('.menu');
+    const toggle = document.querySelector('.menu-toggle');
+    if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+        document.body.classList.remove('menu-open');
+    }
+});
+
+</script>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Track</th>
+                <th>Days</th>
+                <th>Schedule</th>
+                <th>Fare</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="icon">🚌</span>Marj - Mutah University</td>
+                <td>Sun, Tue, Thu</td>
+                <td>7:30, 8:30, 9:30, 9:30, 10:30, 11:30, 12:30</td>
+                <td>JD 0.5</td>
+            </tr>
+            <tr>
+                <td><span class="icon">🚌</span>Marj - Mutah University</td>
+                <td>Mon, Wed</td>
+                <td>7:30, 8:30, 9:30, 9:30, 10:30, 11:30, 12:30</td>
+                <td>JD 0.5</td>
+            </tr>
+            <tr>
+                <td><span class="icon">🚌</span>Althania - Mutah University</td>
+                <td>Sun, Tue, Thu</td>
+                <td>7:30, 8:30, 9:30, 9:30, 10:30, 11:30, 12:30</td>
+                <td>JD 0.4</td>
+            </tr>
+            <tr>
+                <td><span class="icon">🚌</span>Althania - Mutah University</td>
+                <td>Mon, Wed</td>
+                <td>7:30, 8:30, 9:30, 9:30, 10:30, 11:30, 12:30</td>
+                <td>JD 0.4</td>
+            </tr>
+            <tr>
+                <td><span class="icon">🚌</span>Alkarak - Mutah University</td>
+                <td>Sun, Tue, Thu</td>
+                <td>7:30, 8:30, 9:30, 9:30, 10:30, 11:30, 12:30</td>
+                <td>JD 0.5</td>
+            </tr>
+            <tr>
+                <td><span class="icon">🚌</span>Alkarak - Mutah University</td>
+                <td>Mon, Wed</td>
+                <td>7:30, 8:30, 9:30, 9:30, 10:30, 11:30, 12:30</td>
+                <td>JD 0.5</td>
+            </tr>
+            <tr>
+                <td><span class="icon">🚌</span>Amman - Mutah University</td>
+                <td>Sun, Tue, Thu</td>
+                <td>7:30, 8:30, 9:30, 9:30, 10:30, 11:30, 12:30</td>
+                <td>JD 2.5</td>
+            </tr>
+            <tr>
+                <td><span class="icon">🚌</span>Amman - Mutah University</td>
+                <td>Mon, Wed</td>
+                <td>7:30, 8:30, 9:30, 9:30, 10:30, 11:30, 12:30</td>
+                <td>JD 2.5</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

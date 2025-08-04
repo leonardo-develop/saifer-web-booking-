@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buses Booking</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @font-face {
+    font-family: eae;
+    src: url(css/ntailu.ttf);
+}
+    body {
+        background-color: #040f1a; 
+        margin: 0;
+        font-family: eae;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        text-align: center;
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        height: 70%;
+    }
+    .centered-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .form-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #040f1a;
+        padding: 20px;
+        border-radius: 10px;
+        width: 50%;
+    }
+    .form input[type="text"],
+    .form input[type="date"] {
+        margin: 10px 0;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .search-button {
+        margin: 10px 0;
+        padding: 10px 20px;
+        background-color: #007bff; 
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 50%;
+    }
+    .search-button:hover {
+        background-color: #0056b3;
+    }
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 48px;
+        color: white;
+        cursor: pointer;
+        z-index: 10;
+    }
+    .arrow-left {
+        left: 10px;
+    }
+    .arrow-right {
+        right: 10px;
+    }
+    .hidden {
+        display: none;
+    }
+    .menu {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 200px;
+        height: 100%;
+        background-color: #040f1a;;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+        transform: translateX(100%);
+    }
+
+    .menu a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+    .menu a:hover {
+        background-color: #06a6f9;
+    }
+
+    .menu-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #03202e;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .menu-open .menu {
+        transform: translateX(0);
+    }
+    </style>
+</head>
+<body>
+    <button class="menu-toggle">Menu</button>
+    <nav class="menu">
+        <a href="about.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="track.html">Track</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="BusesBooking.html">Buses Booking</a>
+        <a href="login.html">Logout</a>
+    </nav>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.menu');
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+        const images = document.querySelectorAll('.centered-image');
+
+        if (menuToggle && menu) {
+            menuToggle.addEventListener('click', () => {
+                document.body.classList.toggle('menu-open');
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+
+        let currentImageIndex = 0;
+        const totalImages = images.length;
+
+        function showNextImage() {
+            images[currentImageIndex].classList.add('hidden');
+            currentImageIndex = (currentImageIndex === totalImages - 1) ? 0 : currentImageIndex + 1;
+            images[currentImageIndex].classList.remove('hidden');
+        }
+
+        if (arrowLeft && arrowRight) {
+            arrowLeft.addEventListener('click', () => {
+                images[currentImageIndex].classList.add('hidden');
+                currentImageIndex = (currentImageIndex === 0) ? totalImages - 1 : currentImageIndex - 1;
+                images[currentImageIndex].classList.remove('hidden');
+            });
+
+            arrowRight.addEventListener('click', showNextImage);
+        }
+
+        setInterval(showNextImage, 5000);
+    });
+    </script>
+    <div class="container">
+        <i class="fas fa-chevron-left arrow arrow-left"></i>
+        <img src="img1/Layer 20.png" class="centered-image">
+        <img src="img1/Layer 21.png" class="centered-image hidden">
+        <img src="img1/Layer 22.png" class="centered-image hidden">
+        <img src="img1/Layer 23.png" class="centered-image hidden">
+        <img src="img1/Layer 24.png.jpg" class="centered-image hidden">
+        <i class="fas fa-chevron-right arrow arrow-right"></i>
+    </div>
+    <div class="form-container">
+        <form class="form">
+            <input type="text" placeholder="from" required>
+            <input type="text" placeholder="to" required>
+            <input type="date" required>
+            <input type="submit" value="search" class="search-button">
+        </form>
+    </div>
+</body>
+</html>

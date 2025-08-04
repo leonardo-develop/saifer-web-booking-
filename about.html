@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=" ">
+    <meta name="author" content="ezzaldeen AL-bitar" />
+    <link rel="icon" href="img1/Layer 9.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <title>EDURIDERS ABOUT</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .edit-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .edit-form input,
+        .edit-form button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .edit-form button {
+            background-color: #1a1a1a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .edit-form button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <img src="img1/Layer 6.png" alt="" id="layer6">
+            <nav class="menu">
+                <ul>
+                    <li><a href="about.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" onclick="fetchUserData()"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <hr>
+    <div class="container3">
+        <div id="layer16"><img src="img1/layer16.png" alt=""></div>
+        <div class="button1"><a href="services.html"><button>
+                    <h1>start your journy</h1>
+                </button></a></div>
+    </div>
+    <div class="edit-container hidden" id="edit-container">
+        <form class="edit-form" id="edit-form" method="post" action="update_user.php">
+            <input type="hidden" name="user_id" id="user_id" value="">
+            <input type="text" name="username" id="username" placeholder="Username" value="">
+            <input type="email" name="email" id="email" placeholder="Email" value="">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+    <script>
+        function fetchUserData() {
+            fetch('get_user_data.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('user_id').value = data.id;
+                    document.getElementById('username').value = data.username;
+                    document.getElementById('email').value = data.email;
+                    document.getElementById('edit-container').classList.remove('hidden');
+                })
+                .catch(error => console.error('Error fetching user data:', error));
+        }
+    </script>
+</body>
+
+</html>

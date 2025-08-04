@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=" ">
+    <meta name="author" content="ezzaldeen AL-bitar" />
+    <link rel="icon" href="img1/Layer 9.png">
+    <link rel="stylesheet" href="css/menu.css">
+    <title> Services </title>
+    <style>
+        @font-face {
+    font-family: eae;
+    src: url(css/ntailu.ttf);
+}
+        body {
+            background-color: #03202e;
+            color: #ffffff;
+            font-family: eae;
+            text-align: center;
+        }
+
+        .service-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .service-box {
+            background-color: #fffbfb;
+            border-radius: 10%;
+            padding: 30px;
+            margin: 10px;
+            height: 500px;
+            width: 22%;
+        }
+
+        .service-title {
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .service-description {
+            font-size: 33px;
+            color: #06f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #06a6f9;
+        }
+
+        p {
+            font-size: 50px;
+            margin-bottom: 0%;
+        }
+
+        img {
+            width: 256px;
+            height: 256px;
+        }
+        .menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #03202e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #06a6f9;
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #03202e;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu-open .menu {
+    transform: translateX(0);
+}
+
+    </style>
+</head>
+
+<body>
+    <button class="menu-toggle">Menu</button>
+<nav class="menu">
+    <a href="about.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="track.html">Track</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="BusesBooking.html">Buses Booking</a>
+    <a href="login.html">Logout</a>
+</nav>
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('menu-open');
+});
+
+document.addEventListener('click', (event) => {
+    const menu = document.querySelector('.menu');
+    const toggle = document.querySelector('.menu-toggle');
+    if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+        document.body.classList.remove('menu-open');
+    }
+});
+
+</script>
+
+    <P>Our Services</P>
+    <div class="service-container">
+        <div class="service-box">
+            <img src="img1/Layer 12.png">
+            <div class="service-title">
+                <h1>Buses Booking<h1>
+            </div>
+            <div class="service-description"><a href="BusesBooking.html">Real-time <br>seat availability <br> and confirmation</a></div>
+        </div>
+        <div class="service-box">
+            <img src="img1/Layer 11.png" Buses Tracking">
+            <div class="service-title">
+                <h1>Buses Tracking</h1>
+            </div>
+            <div class="service-description"><a href="track.html">Track the <br> route of your <br> university buses</a>
+            </div>
+        </div>
+        <div class="service-box">
+            <img src="img1/Layer 14.png">
+            <div class="service-title">
+                <h1 style="font-size: 32px;">Buses Schedules</h1>
+            </div>
+            <div class="service-description"><a href="schedule.html">Provides real-time <br> updates on <br> bus
+                    locations</a></div>
+        </div>
+    </div>
+</body>
+
+</html>

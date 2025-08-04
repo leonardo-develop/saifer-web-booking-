@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking</title>
+    <link rel="stylesheet" href="css/menu.css">
+
+    <style>
+        @font-face {
+    font-family: eae;
+    src: url(css/ntailu.ttf);
+}
+        body {
+            font-family: eae;
+            background-color: #f0f0f0;
+            color: #03202e;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .section-header {
+            background-color: #06a6f9;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .section-header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            display: contents;
+        }
+
+        .map-section {
+            background-color: #fff;
+            padding: 20px 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .scrollmenu {
+            background-color: #03202e;
+            overflow: auto;
+            white-space: nowrap;
+            width: 100%;
+            padding: 10px 0;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .scrollmenu:hover {
+            transform: scale(1.05);
+        }
+
+        .scrollmenu a {
+            display: inline-block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .scrollmenu a:hover {
+            background-color: #06a6f9;
+            transform: scale(1.1);
+        }
+
+        .scrollmenu a:hover::after {
+            content: attr(data-phone);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #06a6f9;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 0.9;
+        }
+
+        iframe {
+            border: 0;
+            width: 100%;
+            height: 450px;
+        }
+
+        #locations-wrapper {
+            width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+        .menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #03202e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #06a6f9;
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #03202e;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu-open .menu {
+    transform: translateX(0);
+}
+
+    </style>
+</head>
+
+<body>
+    <button class="menu-toggle">Menu</button>
+<nav class="menu">
+    <a href="about.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="track.html">Track</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="BusesBooking.html">Buses Booking</a>
+    <a href="login.html">Logout</a>
+</nav>
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('menu-open');
+});
+
+document.addEventListener('click', (event) => {
+    const menu = document.querySelector('.menu');
+    const toggle = document.querySelector('.menu-toggle');
+    if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+        document.body.classList.remove('menu-open');
+    }
+});
+
+</script>
+
+    <div class="section">
+        <div class="section-header">
+            <h1 class="container">مكان تواجد الحافلات</h1>
+        </div>
+        <div class="map-section">
+            <div class="container">
+                <div id="locations-wrapper">
+                    <iframe src="//maps.google.com/maps?q=31.09190607628813,35.71789131549803&z=14&output=embed"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="scrollmenu" id="locationsmap">
+                    <a href="#" data-uid="1" data-phone="0798881111">عمان</a>
+                    <a href="#" data-uid="2" data-phone="0779992222">الكرك</a>
+                    <a href="#" data-uid="3" data-phone="0797773333">مؤتة</a>
+                    <a href="#" data-uid="4" data-phone="0789994444">المرج</a>
+                    <a href="#" data-uid="5" data-phone="0787775555">القصر</a>
+                    <a href="#" data-uid="6" data-phone="0778886666">الربة</a>
+                    <a href="#" data-uid="7" data-phone="0779797777">المزار</a>
+                    <a href="#" data-uid="8" data-phone="0778788888">الثنية</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<html>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content=" " />
+<meta name="author" content="ezzaldeen AL-bitar" />
+<link rel="icon" href="img1/Layer 9.png" />
+<title> contact </title>
+<link rel="stylesheet" href="css/menu.css">
+<style>
+    @font-face {
+    font-family: eae;
+    src: url(css/ntailu.ttf);
+}
+    body {
+        font-family: eae;
+        margin: 0;
+    }
+    .menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #03202e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #06a6f9;
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #03202e;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu-open .menu {
+    transform: translateX(0);
+}
+    html {
+        box-sizing: border-box;
+    }
+
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    .row {
+        justify-content: space-between;
+        display: flex;
+    }
+
+    .column {
+        display: inline-flex;
+        width: 23.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+        margin-left: 80px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+    }
+
+    .about-section {
+        padding: 10px;
+        text-align: center;
+        height: 20%;
+        background-color: #03202e;
+        color: white;
+        justify-content: center;
+        display: flex;
+    }
+
+    .about-section h1 {
+        justify-content: center;
+        display: flex;
+        font-size: 50px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .container::after,
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .title {
+        color: grey;
+    }
+
+    @media screen and (max-width: 650px) {
+        .column {
+            width: 100%;
+            display: block;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="about-section">
+        <button class="menu-toggle">Menu</button>
+<nav class="menu">
+    <a href="about.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="track.html">Track</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="BusesBooking.html">Buses Booking</a>
+    <a href="login.html">Logout</a>
+</nav>
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('menu-open');
+});
+
+document.addEventListener('click', (event) => {
+    const menu = document.querySelector('.menu');
+    const toggle = document.querySelector('.menu-toggle');
+    if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+        document.body.classList.remove('menu-open');
+    }
+});
+
+</script>
+        <h1>About Us</h1>
+    </div>
+
+    <h2 style="text-align: center">Website developers:</h2>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <img src="img1/ah.jpg" alt=" ezzaldeen AL-bitar" style="width: 100%" />
+                <div class="container">
+                    <h2>Ezzaldeen Bajes AL-bitar</h2>
+                    <p class="title">Developer</p>
+                    <p>Email : EzzaldeenBajesAL-bitar@mail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <img src="img1/ah.jpg" alt="Sanad Mohammed Al-Abadi" style="width: 100%" />
+                <div class="container">
+                    <h2>Sanad Mohammed Al-Abadi</h2>
+                    <p class="title">desgin</p>
+                    <p>Email : SanadMohammedAl-Abadi@mail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <img src="img1/ah.jpg" alt="Ahmad Jamal Al-Darabah" style="width: 100%" />
+                <div class="container">
+                    <h2>Ahmad Jamal Al-Darabah</h2>
+                    <p class="title">Developer</p>
+                    <p>Email :AhmadJamalAl-Darabah@mail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
